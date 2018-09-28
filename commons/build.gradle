@@ -35,5 +35,3 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:' + versions.supportLib
     implementation project(':core')
 }
-
-apply from: 'https://raw.githubusercontent.com/afollestad/aidanfollestad.com/master/android-lib-release.gradle'
