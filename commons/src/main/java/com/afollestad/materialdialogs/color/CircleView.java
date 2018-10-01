@@ -232,4 +232,5 @@ public class CircleView extends FrameLayout {
     }
     cheatSheet.show();
   }
+
 }
