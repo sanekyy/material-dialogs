@@ -7,6 +7,7 @@ class ColorPalette {
 
   static final int[] PRIMARY_COLORS =
       new int[] {
+              0,
         Color.parseColor("#F44336"),
         Color.parseColor("#E91E63"),
         Color.parseColor("#9C27B0"),
@@ -30,6 +31,7 @@ class ColorPalette {
 
   static final int[][] PRIMARY_COLORS_SUB =
       new int[][] {
+              new int[]{},
         new int[] {
           Color.parseColor("#FFEBEE"),
           Color.parseColor("#FFCDD2"),
@@ -262,6 +264,7 @@ class ColorPalette {
 
   static final int[] ACCENT_COLORS =
       new int[] {
+              0,
         Color.parseColor("#FF1744"),
         Color.parseColor("#F50057"),
         Color.parseColor("#D500F9"),
@@ -282,6 +285,7 @@ class ColorPalette {
 
   static final int[][] ACCENT_COLORS_SUB =
       new int[][] {
+              new int[]{},
         new int[] {
           Color.parseColor("#FF8A80"),
           Color.parseColor("#FF5252"),

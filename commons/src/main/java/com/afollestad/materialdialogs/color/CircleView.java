@@ -160,14 +160,41 @@ public class CircleView extends FrameLayout {
   protected void onDraw(Canvas canvas) {
     super.onDraw(canvas);
     final int outerRadius = getMeasuredWidth() / 2;
-    if (selected) {
+    if (Color.alpha(innerPaint.getColor()) == 0) {
       final int whiteRadius = outerRadius - borderWidthLarge;
       final int innerRadius = whiteRadius - borderWidthSmall;
-      canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, outerRadius, outerPaint);
-      canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, whiteRadius, whitePaint);
-      canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, innerRadius, innerPaint);
+      outerPaint.setStrokeWidth(outerRadius - whiteRadius);
+      if (selected) {
+        canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, outerRadius, outerPaint);
+        canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, outerRadius, outerPaint);
+        canvas.drawLine(
+                getMeasuredWidth() / 2 + outerRadius,
+                getMeasuredHeight() / 2 - outerRadius,
+                getMeasuredWidth() / 2 - outerRadius,
+                getMeasuredHeight() / 2 + outerRadius,
+                outerPaint
+        );
+      } else {
+        canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, outerRadius, outerPaint);
+        canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, whiteRadius, whitePaint);
+        canvas.drawLine(
+                getMeasuredWidth() / 2 + outerRadius,
+                getMeasuredHeight() / 2 - outerRadius,
+                getMeasuredWidth() / 2 - outerRadius,
+                getMeasuredHeight() / 2 + outerRadius,
+                outerPaint
+        );
+      }
     } else {
-      canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, outerRadius, innerPaint);
+      if (selected) {
+        final int whiteRadius = outerRadius - borderWidthLarge;
+        final int innerRadius = whiteRadius - borderWidthSmall;
+        canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, outerRadius, outerPaint);
+        canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, whiteRadius, whitePaint);
+        canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, innerRadius, innerPaint);
+      } else {
+        canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, outerRadius, innerPaint);
+      }
     }
   }
 

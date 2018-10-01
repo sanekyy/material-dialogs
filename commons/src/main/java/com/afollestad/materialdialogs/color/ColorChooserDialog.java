@@ -183,28 +183,35 @@ public class ColorChooserDialog extends DialogFragment
 
   @Override
   public void onClick(View v) {
-    if (v.getTag() != null) {
-      final String[] tag = ((String) v.getTag()).split(":");
-      final int index = Integer.parseInt(tag[0]);
-      final MaterialDialog dialog = (MaterialDialog) getDialog();
-      final Builder builder = getBuilder();
+      if (v.getTag() != null) {
+          final String[] tag = ((String) v.getTag()).split(":");
+          final int index = Integer.parseInt(tag[0]);
+          final int color = Integer.parseInt(tag[1]);
+          final MaterialDialog dialog = (MaterialDialog) getDialog();
+          final Builder builder = getBuilder();
 
-      if (isInSub()) {
-        subIndex(index);
-      } else {
-        topIndex(index);
-        if (colorsSub != null && index < colorsSub.length) {
-          dialog.setActionButton(DialogAction.NEGATIVE, builder.backBtn);
-          isInSub(true);
-        }
-      }
 
-      if (builder.allowUserCustom) {
-        selectedCustomColor = getSelectedColor();
+          if (Color.alpha(color) == 0) {
+              topIndex(index);
+              subIndex(-1);
+          } else {
+              if (isInSub()) {
+                  subIndex(index);
+              } else {
+                  topIndex(index);
+                  if (colorsSub != null && index < colorsSub.length) {
+                      dialog.setActionButton(DialogAction.NEGATIVE, builder.backBtn);
+                      isInSub(true);
+                  }
+              }
+          }
+
+          if (builder.allowUserCustom) {
+              selectedCustomColor = getSelectedColor();
+          }
+          invalidateDynamicButtonColors();
+          invalidate();
       }
-      invalidateDynamicButtonColors();
-      invalidate();
-    }
   }
 
   @Override
