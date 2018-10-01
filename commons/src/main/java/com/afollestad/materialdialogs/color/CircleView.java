@@ -166,7 +166,7 @@ public class CircleView extends FrameLayout {
       outerPaint.setStrokeWidth(outerRadius - whiteRadius);
       if (selected) {
         canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, outerRadius, outerPaint);
-        canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, outerRadius, outerPaint);
+        canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, whiteRadius, whitePaint);
         canvas.drawLine(
                 getMeasuredWidth() / 2 + outerRadius,
                 getMeasuredHeight() / 2 - outerRadius,

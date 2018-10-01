@@ -267,12 +267,15 @@ public class ColorChooserDialog extends DialogFragment
     }
 
     int color = 0;
+    boolean isColorFounded = false;
     if (subIndex() > -1) {
+      isColorFounded = true;
       color = colorsSub[topIndex()][subIndex()];
     } else if (topIndex() > -1) {
+      isColorFounded = true;
       color = colorsTop[topIndex()];
     }
-    if (color == 0) {
+    if (!isColorFounded) {
       int fallback = 0;
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         fallback = DialogUtils.resolveColor(getActivity(), android.R.attr.colorAccent);
